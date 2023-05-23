@@ -8,7 +8,10 @@ public class Main {
                 {' ', '|', ' ', '|', ' '}};
         Method.printBoard(gameBoard);
 
-        int position=Method.getNum();
-        System.out.println(position);
+        System.out.println("Enter your position (1 -9)->");
+        int playerPos=Method.getNum();
+        Method.placePiece(gameBoard,playerPos,"player");
+
+        Method.printBoard(gameBoard);
     }
 }
