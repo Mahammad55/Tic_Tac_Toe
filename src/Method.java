@@ -1,7 +1,9 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Method {
     static Scanner sc = new Scanner(System.in);
+    static Random rd=new Random();
 
     public static void printBoard(char[][] gameBoard) {
         for (char[] board : gameBoard) {
