@@ -7,5 +7,8 @@ public class Main {
                 {'-', '+', '+', '+', '-'},
                 {' ', '|', ' ', '|', ' '}};
         Method.printBoard(gameBoard);
+
+        int position=Method.getNum();
+        System.out.println(position);
     }
 }
