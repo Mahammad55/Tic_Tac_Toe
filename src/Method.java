@@ -1,9 +1,10 @@
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Method {
-    static Scanner sc = new Scanner(System.in);
-    static Random rd=new Random();
+    public static Scanner sc = new Scanner(System.in);
+    public static Random rd = new Random();
+    public static final List<Integer> playerPosition=new ArrayList<>();
+    public static final List<Integer> cpuPosition=new ArrayList<>();
 
     public static void printBoard(char[][] gameBoard) {
         for (char[] board : gameBoard) {
@@ -49,5 +50,37 @@ public class Method {
             case 9 -> gameBoard[4][4] = symbol;
             default -> System.out.println("Enter correct position");
         }
+    }
+
+    public static String checkWinner() {
+        List<Integer> topRow = Arrays.asList(1, 2, 3);
+        List<Integer> midRow = Arrays.asList(4, 5, 6);
+        List<Integer> bottomRow = Arrays.asList(7, 8, 9);
+        List<Integer> leftColm = Arrays.asList(1, 4, 7);
+        List<Integer> midColm = Arrays.asList(2, 5, 8);
+        List<Integer> rightColm = Arrays.asList(3, 6, 9);
+        List<Integer> cross1 = Arrays.asList(7, 5, 3);
+        List<Integer> cross2 = Arrays.asList(9, 5, 1);
+
+        List<List<Integer>> winning = new ArrayList<>();
+        winning.add(topRow);
+        winning.add(midRow);
+        winning.add(bottomRow);
+        winning.add(leftColm);
+        winning.add(midColm);
+        winning.add(rightColm);
+        winning.add(cross1);
+        winning.add(cross2);
+
+        for (List<Integer> list : winning) {
+            if (new HashSet<>(playerPosition).containsAll(list)) {
+                return "\nCongrats you win ):";
+            } else if (new HashSet<>(cpuPosition).containsAll(list)) {
+                return "\nSorry ): CPU wins";
+            } else if (playerPosition.size() + cpuPosition.size() == 9) {
+                return "\nEqual..";
+            }
+        }
+        return "";
     }
 }
