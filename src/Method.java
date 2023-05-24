@@ -35,8 +35,10 @@ public class Method {
         char symbol = ' ';
         if (user.equals("player")) {
             symbol = 'X';
+            playerPosition.add(position);
         } else if (user.equals("cpu")) {
             symbol = 'O';
+            cpuPosition.add(position);
         }
         switch (position) {
             case 1 -> gameBoard[0][0] = symbol;
